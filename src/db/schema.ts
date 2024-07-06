@@ -72,4 +72,5 @@ import {
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     name: text("name").notNull(),
+    MaximumPrice: integer("MaximumPrice").notNull().default(0),
   });
