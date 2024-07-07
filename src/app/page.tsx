@@ -22,7 +22,7 @@ export default async function HomePage() {
         <div key={item.id} className="border p-8 rounded-xl">
           {item.name}
           
-          Maximum Price: ₹{item.MaximumPrice / 100}
+          Starting Price: ₹{item.StartingPrice / 100}
           </div>
       ))}
       </div>

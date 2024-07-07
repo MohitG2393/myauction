@@ -72,5 +72,6 @@ import {
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     name: text("name").notNull(),
-    MaximumPrice: integer("MaximumPrice").notNull().default(0),
+    fileKey: text("fileKey").notNull(),
+    StartingPrice: integer("StartingPrice").notNull().default(0),
   });
