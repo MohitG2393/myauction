@@ -1,18 +1,9 @@
 import { auth } from "@/auth";
-import { SignIn } from "@/components/sign-in";
-import { SignOut } from "@/components/sign-out";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { database } from "@/db/database";
-import { bids as bidsSchema, items } from "@/db/schema";
-import { revalidatePath } from "next/cache";
+import { env } from "@/env";
+import { getImageUrl } from "@/util/file";
 import Image from "next/image";
-
-function getImageUrl(fileKey: string) {
-  return 'https://pub-32a54c0560f54689b69aa72dc9b6d72c.r2.dev/${fileKey}';
-  return 'https://pub-32a54c0560f54689b69aa72dc9b6d72c.r2.dev/tire12.jpg';
-
-}
+import { ItemCard } from "./item-card";
 
 export default async function HomePage() {
   const session = await auth();
@@ -25,19 +16,7 @@ export default async function HomePage() {
       Active Bids
       </h1>
         <div className="grid grid-cols-4 gap-8">
-      {allItems.map((item) => (
-        <div key={item.id} className="border p-8 rounded-xl">
-          <Image 
-          src={getImageUrl(item.fileKey)}
-          alt={item.name}
-          width={200}
-          height={200}
-          />
-          {item.name}
-          
-          Starting Price: ₹{item.StartingPrice / 100}
-          </div>
-      ))}
+      {allItems.map((item) => (<ItemCard key={item.id} item={item} />))}
       </div>
     </main>
   );
