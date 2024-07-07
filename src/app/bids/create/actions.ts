@@ -1,6 +1,7 @@
-'use server'
+"use server";
 
-import {database} from "@/db/database";
+import { revalidatePath } from "next/cache";
+import { database } from "@/db/database";
 import { items } from "@/db/schema";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
@@ -13,9 +14,9 @@ export async function createUploadUrlAction(key: string, type: string) {
 export async function  createItemAction({
     fileName,
     name,
-    startingPrice,
+    StartingPrice,
 
-}: {fileName: string, name: string, startingPrice: number}) {
+}: {fileName: string, name: string, StartingPrice: number}) {
     const session = await auth();
 
     if (!session) {
@@ -28,14 +29,14 @@ export async function  createItemAction({
         throw new Error("Unauthorized")
     }
 
-    const priceAsCents = startingPrice;
-    
-        await database.insert(items).values({
-          name,
-          startingPrice,
-          fileKey: fileName,
-          userId: user.id,
-        });
+
+    await database.insert(items).values({
+        name,
+        StartingPrice,
+        fileKey: fileName,
+        currentBid: StartingPrice,
+        userId: user.id,
+      });
         redirect('/')
     
 }
