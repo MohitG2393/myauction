@@ -74,6 +74,7 @@ import {
     name: text("name").notNull(),
     fileKey: text("fileKey").notNull(),
     StartingPrice: integer("StartingPrice").notNull().default(0),
+    bidInterval: integer("bidInterval").notNull().default(100),
   });
 
   export type Item = typeof items.$inferSelect;
