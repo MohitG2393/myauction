@@ -1,4 +1,3 @@
-export function formatToDollar(cents: number) {
-    return '₹{Math.floor(cents / 100).toFixed(2)}';
-  }
-  
+export function formatToDollar(cents: number): string {
+  return `${(cents / 100).toFixed(2)}`;
+}

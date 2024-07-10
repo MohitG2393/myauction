@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { items } from "@/db/schema";
 import { auth } from "@/auth";
 import { EmptyState } from "./empty-state";
-import { pageTitleStlyes } from "../syles";
+import { pageTitleStlyes } from "../styles";
 
 export default async function MyAuctionPage() {
 

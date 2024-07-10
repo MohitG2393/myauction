@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createItemAction, createUploadUrlAction } from "./actions";
-import { pageTitleStlyes } from "@/app/syles";
+import { pageTitleStlyes } from "@/app/styles";
 
 export default function CreatePage() {
 
