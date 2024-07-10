@@ -16,7 +16,7 @@ export function ItemCard({item}: {item: Item}) {
                 height={200}
             />
             <h2 className="text-xl font-bold">{item.name}</h2> 
-            <p className="text-large">Starting Price: ₹{formatToDollar(item.StartingPrice)}</p>
+            <p className="text-large">Starting Price: ${formatToDollar(item.StartingPrice)}</p>
 
             <Button asChild>
                 <Link href={`/bids/${item.id}`}>Place Bid</Link>
