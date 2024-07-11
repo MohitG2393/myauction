@@ -75,6 +75,7 @@ import {
     currentBid: integer("currentBid").notNull().default(0),
     StartingPrice: integer("StartingPrice").notNull().default(0),
     bidInterval: integer("bidInterval").notNull().default(100),
+    endDate: timestamp("endDate", { mode: "date"}).notNull(),
   });
 
   export const bids = pgTable("bb_bids", {
