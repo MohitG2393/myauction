@@ -6,6 +6,7 @@ import { Header } from "./header";
 import "@knocklabs/react/dist/index.css";
 import { AppKnockProviders } from "./knock-provider";
 import { SessionProvider } from "next-auth/react";
+import { Footer } from "./footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background flex-grow font-sans antialiased",
           fontSans.variable
         )}
       >
@@ -35,6 +36,7 @@ export default function RootLayout({
             <Header />
             <div className="container mx-auto py-12">{children}</div>
           </AppKnockProviders>
+          <Footer />
         </SessionProvider>
       </body>
     </html>

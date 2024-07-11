@@ -29,9 +29,10 @@ export async function createBidAction(itemId: number) {
     throw new Error("Item not found");
   }
 
-  if (!isBidOver(item)) {
-    throw new Error("This Auction is already over");
+  if (isBidOver(item)) {
+    throw new Error("This auction is already over");
   }
+
 
   const latestBidValue = item.currentBid + item.bidInterval;
 

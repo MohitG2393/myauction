@@ -28,6 +28,13 @@ export function Header() {
             My Trading Kart
           </Link>
 
+
+          <Link
+            href="/homeonly"
+            className="hover:underline flex items-center gap-1"
+                > Home
+                  </Link>
+
           <div className="flex items-center gap-8">
             <Link href="/" className="hover:underline flex items-center gap-1">
               All Auctions
@@ -35,6 +42,9 @@ export function Header() {
 
             {userId && (
               <>
+
+                 
+
                 <Link
                   href="/bids/create"
                   className="hover:underline flex items-center gap-1"
