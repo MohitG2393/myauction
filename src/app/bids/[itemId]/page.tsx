@@ -1,9 +1,11 @@
 import { createBidAction } from "@/app/bids/[itemId]/actions";
 import { auth } from "@/auth";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getBidsForItem } from "@/data-access/bids";
 import { getItem } from "@/data-access/items";
-import { pageTitleStlyes } from "@/app/styles";
+import { pageTitleStyles } from "@/app/styles";
+import { isBidOver } from "@/util/bids";
 import { formatToDollar } from "@/util/currency";
 import { getImageUrl } from "@/util/file";
 import { formatDistance } from "date-fns";
@@ -28,9 +30,9 @@ export default async function ItemPage({
       <div className="space-y-8 flex flex-col items-center mt-12">
         <Image src="/package.svg" width="200" height="200" alt="Package" />
 
-        <h1 className={pageTitleStlyes}>Item not found</h1>
+        <h1 className={pageTitleStyles}>Item not found</h1>
         <p className="text-center">
-          The item you&apos;re trying to view is invalid.
+          The item you are trying to view is invalid.
           <br />
           Please go back and search for a different auction item.
         </p>
@@ -47,16 +49,20 @@ export default async function ItemPage({
   const hasBids = allBids.length > 0;
 
   const canPlaceBid =
-    session && item.userId !== session.user.id
+    session && item.userId !== session.user.id && !isBidOver(item);
 
   return (
     <main className="space-y-8">
       <div className="flex gap-8">
         <div className="flex flex-col gap-6">
-          <h1 className={pageTitleStlyes}>
+          <h1 className={pageTitleStyles}>
             <span className="font-normal">Auction for</span> {item.name}
           </h1>
-       
+          {isBidOver(item) && (
+            <Badge className="w-fit" variant="destructive">
+              Bidding Over
+            </Badge>
+          )}
 
           <Image
             className="rounded-xl"

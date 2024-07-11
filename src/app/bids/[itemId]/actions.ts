@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 
 import { Knock } from "@knocklabs/node";
 import { env } from "@/env";
+import { isBidOver } from "@/util/bids";
 
 const knock = new Knock(env.KNOCK_SECRET_KEY);
 
@@ -28,6 +29,9 @@ export async function createBidAction(itemId: number) {
     throw new Error("Item not found");
   }
 
+  if (!isBidOver(item)) {
+    throw new Error("This Auction is already over");
+  }
 
   const latestBidValue = item.currentBid + item.bidInterval;
 

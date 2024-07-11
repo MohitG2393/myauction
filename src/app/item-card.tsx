@@ -30,7 +30,7 @@ export function ItemCard({ item }: { item: Item }) {
       )}
 
       <Button asChild variant={isBidOver(item) ? "outline" : "default"}>
-        <Link href={`/items/${item.id}`}>
+        <Link href={`/bids/${item.id}`}>
           {isBidOver(item) ? "View Bid" : "Place Bid"}
         </Link>
       </Button>

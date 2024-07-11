@@ -1,1 +1,1 @@
-export const pageTitleStlyes = "text-4xl font-bold"; 
+export const pageTitleStyles = "text-4xl font-bold"; 

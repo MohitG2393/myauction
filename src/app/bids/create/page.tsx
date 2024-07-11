@@ -7,7 +7,7 @@ import {
 import { DatePickerDemo } from "@/components/date-picker";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { pageTitleStlyes } from "@/app/styles";
+import { pageTitleStyles } from "@/app/styles";
 import { useState } from "react";
 
 export default function CreatePage() {
@@ -15,7 +15,7 @@ export default function CreatePage() {
 
   return (
     <main className="space-y-8">
-      <h1 className={pageTitleStlyes}>Post an Item</h1>
+      <h1 className={pageTitleStyles}>Post an Item</h1>
 
       <form
         className="flex flex-col border p-8 rounded-xl space-y-4 max-w-lg"
