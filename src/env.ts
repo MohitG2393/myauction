@@ -9,12 +9,12 @@ export const env = createEnv({
         CLOUDFLARE_ACCESS_KEY_ID: z.string().min(1),
         CLOUDFLARE_SECRET_ACCESS_KEY: z.string().min(1),
         BUCKET_NAME: z.string().min(1),
-        KNOCK_SECRET_KEY: z.string().min(1)
+        KNOCK_SECRET_KEY: z.string().min(1),
     },
     client: {
         NEXT_PUBLIC_BUCKET_URL: z.string().url(),
-        NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY: z.string().url(),
-        NEXT_PUBLIC_KNOCK_FEED_ID: z.string().url(),
+        NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY: z.string().min(1),
+        NEXT_PUBLIC_KNOCK_FEED_ID: z.string().min(1),
     },
     runtimeEnv: {
         NODE_ENV: process.env.NODE_ENV,

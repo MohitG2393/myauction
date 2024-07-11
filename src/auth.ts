@@ -33,8 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     session({ session, user }) {
       session.user.id = user.id;
       return session;
-    },
-  },
+    }},
   providers: [Google],
 });
 

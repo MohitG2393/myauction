@@ -47,7 +47,7 @@ export default async function ItemPage({
   const hasBids = allBids.length > 0;
 
   const canPlaceBid =
-    session && item.userId !== session.user.id;
+    session && item.userId !== session.user.id
 
   return (
     <main className="space-y-8">
@@ -56,7 +56,7 @@ export default async function ItemPage({
           <h1 className={pageTitleStlyes}>
             <span className="font-normal">Auction for</span> {item.name}
           </h1>
-      
+       
 
           <Image
             className="rounded-xl"
@@ -90,11 +90,11 @@ export default async function ItemPage({
         <div className="space-y-4 flex-1">
           <div className="flex justify-between">
             <h2 className="text-2xl font-bold">Current Bids</h2>
-             
+            {canPlaceBid && (
               <form action={createBidAction.bind(null, item.id)}>
                 <Button>Place a Bid</Button>
               </form>
-          
+            )}
           </div>
 
           {hasBids ? (
