@@ -6,7 +6,7 @@ import { Header } from "./header";
 import "@knocklabs/react/dist/index.css";
 import { AppKnockProviders } from "./knock-provider";
 import { SessionProvider } from "next-auth/react";
-import { Footer } from "./footer";
+import Footer from './footer'
 
 const fontSans = FontSans({
   subsets: ["latin"],

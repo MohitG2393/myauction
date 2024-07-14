@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { items } from "@/db/schema";
 import { auth } from "@/auth";
 import { EmptyState } from "./empty-state";
-import { pageTitleStlyes } from "../styles";
+import { pageTitleStyles } from "../styles";
 
 export default async function MyAuctionPage() {
 
@@ -21,7 +21,7 @@ export default async function MyAuctionPage() {
 
   return (
     <main className="space-y-8">
-      <h1 className={pageTitleStlyes}>
+      <h1 className={pageTitleStyles}>
       Your Current Auctions
       </h1>
             {hasItems ? (
