@@ -20,38 +20,28 @@ export function Header() {
   const userId = session?.data?.user?.id;
 
   return (
-    <div className="bg-gray-200 py-2">
-      <div className="container flex justify-between items-center">
+    <header className="fixed top-0 left-0 w-full bg-gray-200 py-2 shadow-md z-50">
+      <div className="container flex justify-between items-center mx-auto px-4">
         <div className="flex items-center gap-12">
           <Link href="/" className="hover:underline flex items-center gap-1">
             <Image src="/logo2.svg" width="50" height="50" alt="Logo" />
             My Trading Kart
           </Link>
-
-      
-
           <div className="flex items-center gap-8">
             <Link href="/" className="hover:underline flex items-center gap-1">
               All Auctions
             </Link>
-
-             
             <Link href="/homeonly" className="hover:underline flex items-center gap-1">
               Secondary Home
             </Link>
-
             {userId && (
               <>
-
-                 
-
                 <Link
                   href="/bids/create"
                   className="hover:underline flex items-center gap-1"
                 >
                   Create Auction
                 </Link>
-
                 <Link
                   href="/auctions"
                   className="hover:underline flex items-center gap-1"
@@ -59,10 +49,10 @@ export function Header() {
                   My Auctions
                 </Link>
                 <input
-            type="text"
-            className="px-1 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Search..."
-          />
+                  type="text"
+                  className="px-1 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  placeholder="Search..."
+                />
               </>
             )}
           </div>
@@ -98,7 +88,6 @@ export function Header() {
               />
             </>
           )}
-
           {session?.data?.user.image && (
             <Image
               src={session.data.user.image}
@@ -126,10 +115,9 @@ export function Header() {
               </Button>
             )}
           </div>
-          <div className="relative w-full max-w-md">
-        </div>
+          <div className="relative w-full max-w-md"></div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
