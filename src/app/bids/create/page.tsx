@@ -45,7 +45,7 @@ export default function CreatePage() {
 
           await createItemAction({
             name,
-            StartingPrice: startingPriceInCents,
+            startingPrice: startingPriceInCents,
             fileName: file.name,
             endDate: date,
           });

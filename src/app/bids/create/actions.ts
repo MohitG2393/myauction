@@ -8,37 +8,40 @@ import { redirect } from "next/navigation";
 import { getSignedUrlForS3Object } from "@/lib/s3";
 
 export async function createUploadUrlAction(key: string, type: string) {
- return await getSignedUrlForS3Object(key, type);
+  return await getSignedUrlForS3Object(key, type);
 }
 
-export async function  createItemAction({
-    fileName,
+export async function createItemAction({
+  fileName,
+  name,
+  startingPrice,
+  endDate,
+}: {
+  fileName: string;
+  name: string;
+  startingPrice: number;
+  endDate: Date;
+}) {
+  const session = await auth();
+
+  if (!session) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = session.user;
+
+  if (!user || !user.id) {
+    throw new Error("Unauthorized");
+  }
+
+  await database.insert(items).values({
     name,
-    StartingPrice,
-    endDate
+    startingPrice,
+    fileKey: fileName,
+    currentBid: startingPrice,
+    userId: user.id,
+    endDate,
+  });
 
-}: {fileName: string, name: string, StartingPrice: number, endDate: Date}) {
-    const session = await auth();
-
-    if (!session) {
-        throw new Error("Unauthorized")
-    }
-
-    const user = session.user;
-
-    if (!user || !user.id) {
-        throw new Error("Unauthorized")
-    }
-
-
-    await database.insert(items).values({
-        name,
-        StartingPrice,
-        fileKey: fileName,
-        currentBid: StartingPrice,
-        userId: user.id,
-        endDate,
-      });
-        redirect('/')
-    
+  redirect("/");
 }

@@ -32,7 +32,7 @@ export default async function ItemPage({
 
         <h1 className={pageTitleStyles}>Item not found</h1>
         <p className="text-center">
-          The item you are trying to view is invalid.
+          The item you&apos;re trying to view is invalid.
           <br />
           Please go back and search for a different auction item.
         </p>
@@ -81,7 +81,7 @@ export default async function ItemPage({
             <div>
               Starting Price of{" "}
               <span className="font-bold">
-                ${formatToDollar(item.StartingPrice)}
+                ${formatToDollar(item.startingPrice)}
               </span>
             </div>
             <div>

@@ -33,7 +33,6 @@ export async function createBidAction(itemId: number) {
     throw new Error("This auction is already over");
   }
 
-
   const latestBidValue = item.currentBid + item.bidInterval;
 
   await database.insert(bids).values({
