@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export function ItemCard({ item }: { item: Item }) {
   return (
-    <div key={item.id} className="border p-8 rounded-xl space-y-2">
+    <div key={item.id} className="transition-transform transform hover:scale-105 hover:shadow-lg">
       <Image
         src={getImageUrl(item.fileKey)}
         alt={item.name}
